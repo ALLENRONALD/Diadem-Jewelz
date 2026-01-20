@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Place Order | Diadem Jewels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="order-page">
+
+  <!-- ORDER HEADER -->
+  <section class="order-hero">
+    <h1>Complete Your Order</h1>
+    <p>Every piece is crafted for everyday elegance</p>
+  </section>
+
+  <!-- ORDER FORM -->
+  <section class="order-container">
+    <form id="orderForm">
+
+      <div class="order-product">
+        <h3 id="productName"></h3>
+        <p id="productPrice"></p>
+      </div>
+
+      <label>Full Name</label>
+      <input type="text" id="name" required>
+
+      <label>Email Address</label>
+      <input type="email" id="email" required>
+
+      <label>Phone Number</label>
+      <input type="tel" id="phone" required>
+
+      <label>Delivery Address</label>
+      <textarea id="address" rows="4" required></textarea>
+
+      <button type="submit" class="purchase-btn">
+        Purchase Now
+      </button>
+
+    </form>
+  </section>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Get product info from URL
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product");
+    const price = params.get("price");
+
+    document.getElementById("productName").innerText = product;
+    document.getElementById("productPrice").innerText = "₹" + price;
+
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+
+      const message = `
+Hello Diadem Jewels ✨
+
+I would like to place an order.
+
+🛍 Product: ${product}
+💰 Price: ₹${price}
+
+👤 Name: ${name}
+📞 Phone: ${phone}
+📧 Email: ${email}
+📍 Address: ${address}
+
+Please guide me with the payment process.
+`;
+
+      const whatsappNumber = "917358640959"; // <-- PUT YOUR NUMBER
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappURL, "_blank");
+    });
+  </script>
+
+</body>
+</html>
