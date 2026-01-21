@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "📧 Email: " + email + "%0A%0A" +
         "Please contact me.";
 
-      const whatsappNumber = "917358640959"; // 🔴 REPLACE THIS
+      const whatsappNumber = "917397281997"; // 🔴 REPLACE THIS
       const whatsappURL =
         "https://wa.me/" + whatsappNumber + "?text=" + message;
 
